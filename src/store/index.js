@@ -8,11 +8,15 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     profile: {},
+    blogs: []
   },
   mutations: {
     setProfile(state, profile) {
       state.profile = profile;
     },
+    setBlogs(state, blogs) {
+      state.blogs = blogs
+    }
   },
   actions: {
     async getProfile({ commit }) {
@@ -23,5 +27,14 @@ export default new Vuex.Store({
         console.error(error);
       }
     },
+    async getAllBlogs({ commit }) {
+      try {
+        let res = await api.get("blogs");
+        console.log(res)
+        commit("setBlogs", res.data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
   },
 });

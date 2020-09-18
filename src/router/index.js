@@ -14,12 +14,14 @@ const routes = [
     name: "Home",
     component: Home,
   },
+
   {
     path: "/profile",
     name: "Profile",
     component: Profile,
     beforeEnter: authGuard,
   },
+
 ];
 
 const router = new VueRouter({
