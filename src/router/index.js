@@ -5,6 +5,7 @@ import Home from "../pages/Home.vue";
 // @ts-ignore
 import Profile from "../pages/Profile.vue";
 import { authGuard } from "@bcwdev/auth0-vue";
+import blogPage from "../pages/blogPage.vue"
 
 Vue.use(VueRouter);
 
@@ -14,14 +15,17 @@ const routes = [
     name: "Home",
     component: Home,
   },
-
   {
     path: "/profile",
     name: "Profile",
     component: Profile,
     beforeEnter: authGuard,
   },
-
+  {
+    path: "/blogPage/",
+    name: "blogPage",
+    component: blogPage
+  },
 ];
 
 const router = new VueRouter({

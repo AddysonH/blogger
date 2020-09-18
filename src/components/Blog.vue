@@ -3,7 +3,9 @@
     <div class="card mt-3">
       <div class="card-header">{{blogData.creator.name}}</div>
       <div class="card-body">
-        <img class="card-img-top" :src="blogData.imgUrl" alt />
+        <router-link :to="{name:'blogPage', params:{blogId: blogData._id}}">
+          <img class="card-img-top" :src="blogData.creator.picture" alt />
+        </router-link>
         <h4 class="card-title">{{blogData.title}}</h4>
         <!--<p class="card-text">Text</p>-->
       </div>
