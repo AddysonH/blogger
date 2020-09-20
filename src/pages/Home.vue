@@ -17,16 +17,16 @@
 </template>
 
 <script>
-import Blog from "../components/Blog";
+import Blog from "../components/Blog.vue";
 export default {
   name: "home",
+  mounted() {
+    this.$store.dispatch("getAllBlogs");
+  },
   data() {
     return {
       newBlog: {},
     };
-  },
-  mounted() {
-    this.$store.dispatch("getAllBlogs");
   },
   methods: {
     createBlog() {

@@ -10,7 +10,7 @@ export default new Vuex.Store({
     profile: {},
     blogs: [],
     activeBlog: {},
-    comments: []
+
   },
   mutations: {
     setProfile(state, profile) {
@@ -21,6 +21,9 @@ export default new Vuex.Store({
     },
     setActiveBlog(state, blog) {
       state.activeBlog = blog
+    },
+    addBlog(state, blog) {
+      state.blogs.push(blog)
     }
 
   },
@@ -52,10 +55,9 @@ export default new Vuex.Store({
     async createBlog({ commit }, newBlog) {
       try {
         let res = await api.post('blogs', newBlog)
-        console.log(res)
-        commit("addBlog", res.data.data)
-        commit("setActiveBlog", res.data.data)
-        router.push({ name: "blogs", params: { id: res.data.data_id } })
+        commit("addBlog", res.data)
+        commit("setActiveBlog", res.data)
+        router.push({ name: "BlogPage", params: { id: res.data._id } })
       } catch (error) {
         console.log(error)
       }
