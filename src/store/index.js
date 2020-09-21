@@ -57,11 +57,22 @@ export default new Vuex.Store({
         let res = await api.post('blogs', newBlog)
         commit("addBlog", res.data)
         commit("setActiveBlog", res.data)
-        router.push({ name: "BlogPage", params: { id: res.data._id } })
+        router.push({ name: "blog-page", params: { id: res.data.data._id } })
+      } catch (error) {
+        console.log(error)
+      }
+    },
+    async deleteBlog({ commit }, id) {
+      try {
+        await api.delete('blogs/' + id)
+        commit("removeBlog", id)
+        commit("setActiveBlog", {})
+        router.push({ name: "Home" })
       } catch (error) {
         console.log(error)
       }
     }
+  }
 
-  },
+
 });

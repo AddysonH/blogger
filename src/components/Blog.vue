@@ -23,11 +23,5 @@ export default {
       required: true,
     },
   },
-  data() {
-    return {};
-  },
-  computed: {},
-  methods: {},
-  components: {},
 };
 </script>

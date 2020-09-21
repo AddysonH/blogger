@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import Blog from "../components/Blog.vue";
+import Blog from "../components/Blog";
 export default {
   name: "home",
   mounted() {
@@ -28,17 +28,17 @@ export default {
       newBlog: {},
     };
   },
+  computed: {
+    blogs() {
+      return this.$store.state.blogs;
+    },
+  },
   methods: {
     createBlog() {
       this.$store.dispatch("createBlog", this.newBlog);
       for (let key in this.newBlog) {
         this.newBlog[key] = null;
       }
-    },
-  },
-  computed: {
-    blogs() {
-      return this.$store.state.blogs;
     },
   },
 
