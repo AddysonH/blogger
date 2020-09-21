@@ -13,6 +13,9 @@
         <div>
           <button @click="deleteBlog">Delete</button>
         </div>
+        <div>
+          <!-- <comment v-for="comment in comments" :key="blog._id" :blogData="blog" />-->
+        </div>
       </div>
     </div>
   </div>
@@ -26,17 +29,24 @@ export default {
   },
   mounted() {
     this.$store.dispatch("getActiveBlog", this.$route.params.id);
+    // this.$store.dispatch("getCommentsById", this.$route.params.id);
   },
   computed: {
     blog() {
       return this.$store.state.activeBlog;
     },
+    // comments() {
+    // return this.$store.state.getCommentsById;
+    //},
   },
   methods: {
     deleteBlog() {
       this.$store.dispatch("deleteBlog", this.blog._id);
     },
   },
+  // components: {
+  //   comment,
+  // },
 };
 </script>
 

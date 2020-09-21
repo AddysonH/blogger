@@ -52,6 +52,14 @@ export default new Vuex.Store({
         console.log(error)
       }
     },
+    async getCommentsById({ commit }, id) {
+      try {
+        let res = await api.get("blogs/:id/comments")
+        commit("getCommentsById", res.data.data)
+      } catch (error) {
+        console.log(error)
+      }
+    },
     async createBlog({ commit }, newBlog) {
       try {
         let res = await api.post('blogs', newBlog)
@@ -72,7 +80,7 @@ export default new Vuex.Store({
         console.log(error)
       }
     }
-  }
 
+  },
 
 });

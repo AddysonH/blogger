@@ -23,7 +23,7 @@ const routes = [
   {
     path: "/blogs/:id",
     name: "blog-page",
-    component: BlogPage
+    component: BlogPage,
   }
 ];
 
